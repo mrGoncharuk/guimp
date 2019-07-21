@@ -1,0 +1,71 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    old_Makefile                                       :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/15 19:28:21 by mhonchar          #+#    #+#              #
+#    Updated: 2019/07/21 18:07:34 by mhonchar         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME =			GUImp
+CC =			gcc -O3
+WWW = 			-Wall -Wextra -Werror
+FRAMEWORKS = 	-F frameworks -framework SDL2
+
+SOURCES =		main.c
+
+HEADERS = 		includes/guimp.h
+
+INCLUDES =		-I libft/ \
+				-I includes/
+# 				-I libui
+
+
+SDL =			-I frameworks/SDL2.framework/Version/A/Headers/
+# SDL_TTF = 		-I frameworks/SDL2_ttf.framework/Version/A/Headers/
+# SDL_IMAGE = 	-I frameworks/SDL2_image.framework/Version/A/Headers/
+
+INCLUDES_SDL = 	$(SDL)
+
+OBJ =			$(addprefix $(OBJDIR), $(notdir $(SOURCES:.c=.o)))
+OBJDIR =		obj/
+
+LIBFT =			libft/libft.a
+
+C_RED = 		\033[31m
+C_GREEN = 		\033[32m
+C_MAGENTA = 	\033[35m
+C_NONE = 		\033[0m
+
+
+all: $(NAME)
+
+$(NAME): $(OBJDIR) $(OBJ) $(LIBFT)
+		@$(CC) $(OBJ) $(FRAMEWORKS) -o $@ $(LIBFT)
+		@printf "$(C_MAGENTA)$(NAME):   $(C_NONE) %-39s$(C_GREEN)[done]$(C_NONE)\n" $@
+
+$(OBJDIR)%.o: src/%.c $(HEADERS) $(LIBFT)
+		@$(CC)  $(INCLUDES_SDL) $< -o $@ $(INCLUDES)
+		@printf "$(C_MAGENTA)$(NAME):   $(C_NONE) %-39s$(C_GREEN)[done]$(C_NONE)\n" $@
+
+$(LIBFT):
+		@make -C libft
+
+$(OBJDIR): $(HEADERS) $(LIBFT)
+		@mkdir -p $(OBJDIR)
+
+clean:
+	@rm -f $(OBJ)
+	@make clean -C libft
+	@rm -rf $(OBJDIR)
+	@printf "$(C_MAGENTA)$(NAME):   $(C_NONE) %-39s$(C_RED)[done]$(C_NONE)\n" $@
+
+fclean: clean
+	@make fclean -C libft
+	@rm -f $(NAME)
+	@printf "$(C_MAGENTA)$(NAME):   $(C_NONE) %-39s$(C_RED)[done]$(C_NONE)\n" $@
+
+re: fclean all
