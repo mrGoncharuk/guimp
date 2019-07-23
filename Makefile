@@ -6,7 +6,7 @@
 #    By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/15 19:28:21 by mhonchar          #+#    #+#              #
-#    Updated: 2019/07/21 19:27:18 by mhonchar         ###   ########.fr        #
+#    Updated: 2019/07/23 19:24:04 by mhonchar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ LIB = 	$(addprefix $(LIBFT_DIR), $(LIB_NAME)) \
 
 SRC_FILES =		main.c \
 				error_handler.c \
-				sdl_init.c
+				sdl_init.c \
+				sdl_clean.c \
+				canvas.c \
+				draw_line.c
 
 
 				
@@ -34,6 +37,7 @@ SRC_FILES =		main.c \
 
 HEADERS = 		$(INC_DIR)guimp.h \
 				$(INC_DIR)error_handler.h \
+				$(INC_DIR)canvas.h \
 				$(LIBFT_DIR)libft.h \
 				libsdl/include/SDL2/SDL.h 
 				# libsdl_image/include/SDL2/SDL_image.h \

@@ -6,13 +6,13 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 19:16:47 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/21 19:58:46 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:33:28 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "guimp.h"
 
-void		sdl_st_init(t_sdls *win)
+void		ft_sdl_init(t_sdls *win)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		err_sdl(ERR_INIT);
@@ -23,5 +23,5 @@ void		sdl_st_init(t_sdls *win)
 	win->renderer = SDL_CreateRenderer(win->win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (win->renderer == NULL)
 		err_sdl(ERR_RENDERER_CREATE);
-	win->running = true;
+	win->flags.running = true;
 }
