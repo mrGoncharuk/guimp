@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 17:36:27 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/25 20:21:23 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/07/26 19:17:42 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include "canvas.h"
 # include "button.h"
+# include "window.h"
 # include "SDL.h"
 # include "libft.h"
 # include "error_handler.h"
