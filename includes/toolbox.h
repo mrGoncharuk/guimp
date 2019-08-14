@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 19:20:35 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/26 19:26:13 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/14 15:04:25 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ typedef struct	s_toolbox
 	t_flags		*flags;
 	t_lbutton	buttons[];
 }				t_toolbox;
+
+void		wn_create_toolbox(t_toolbox *tb);
 
 #endif

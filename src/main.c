@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 17:36:52 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/25 20:20:56 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/14 15:04:35 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int		sdl_mainloop(t_sdls *win)
 {
 	t_canvas	*canv;
 	t_mousepos	mp;
+	t_toolbox	tb;
 
+	wn_create_toolbox(&tb);
 	canv = ft_create_canvas(win->renderer, STD_WIDTH, STD_HEIGHT);
 	while (win->flags.running)
 	{

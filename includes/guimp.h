@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 17:36:27 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/26 19:17:42 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/14 16:51:42 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 # include <stdbool.h>
 # include <unistd.h>
+# include "libui.h"
 # include "canvas.h"
-# include "button.h"
-# include "window.h"
+# include "toolbox.h"
 # include "SDL.h"
-# include "libft.h"
-# include "error_handler.h"
 # define STD_WIDTH 800
 # define STD_HEIGHT 600
 

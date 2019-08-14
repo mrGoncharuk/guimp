@@ -6,15 +6,14 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:22:57 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/07/23 20:23:19 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/14 17:01:57 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVAS_H
 # define CANVAS_H
 
-# include "SDL.h"
-# include "libft.h"
+# include "libui.h"
 
 typedef struct		s_vector2
 {

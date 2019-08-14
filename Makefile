@@ -6,42 +6,38 @@
 #    By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/15 19:28:21 by mhonchar          #+#    #+#              #
-#    Updated: 2019/07/25 20:24:14 by mhonchar         ###   ########.fr        #
+#    Updated: 2019/08/14 17:46:12 by mhonchar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = GUImp
-LIB_NAME = libft.a
+LIBUI_NAME = libui.a
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC_DIR = includes/
-LIBFT_DIR = libft/
+LIBUI_DIR = libui/
 
 
-LIB = 	$(addprefix $(LIBFT_DIR), $(LIB_NAME)) \
+LIB = 	$(addprefix $(LIBUI_DIR), $(LIBUI_NAME)) \
 		-L./libsdl/lib -lSDL2 \
 		-L./libsdl_image/lib -lSDL2_image \
 		-L./libsdl_ttf/lib -lSDL2_ttf 
 		# -L./libsdl_mixer/lib -lSDL2_mixer
 
 SRC_FILES =		main.c \
-				error_handler.c \
 				sdl_init.c \
 				sdl_clean.c \
 				canvas.c \
 				draw_line.c \
-				button.c \
-				bt_clear_canvas.c
+				bt_clear_canvas.c \
+				wn_toolbox.c 
 
 
 				
-				
-
 HEADERS = 		$(INC_DIR)guimp.h \
-				$(INC_DIR)error_handler.h \
 				$(INC_DIR)canvas.h \
-				$(INC_DIR)button.h \
-				$(LIBFT_DIR)libft.h \
+				$(INC_DIR)toolbox.h \
+				$(LIBUI_DIR)includes/libui.h \
 				libsdl/include/SDL2/SDL.h \
 				libsdl_image/include/SDL2/SDL_image.h \
 				libsdl_ttf/include/SDL2/SDL_ttf.h 
@@ -53,11 +49,12 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 CC = gcc -g -fsanitize=address
 CFLAGS = -Wall -Werror -Wextra
 INC = 	-I $(INC_DIR) \
-		-I $(LIBFT_DIR) \
+		-I libui/includes/ \
 		-I libsdl/include/SDL2/ \
 		-I libsdl_image/include/SDL2/ \
 		-I libsdl_ttf/include/SDL2/ 
 		# -I libsdl_mixer/include/SDL2/
+
 C_RED = \033[31m
 C_GREEN = \033[32m
 C_MAGENTA = \033[35m
@@ -65,10 +62,12 @@ C_NONE = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(HEADERS) $(OBJ_DIR) $(OBJ)
-	@make -C $(LIBFT_DIR)
+$(NAME): $(LIBUI_NAME) $(HEADERS) $(OBJ_DIR) $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
 	@printf "$(C_MAGENTA)$(NAME):$(C_NONE) %-25s$(C_GREEN)[done]$(C_NONE)\n" $@
+
+$(LIBUI_NAME):
+	@make -C $(LIBUI_DIR)
 
 $(OBJ_DIR):
 	@mkdir obj
@@ -80,12 +79,12 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADERS)
 
 clean:
 	@rm -rf $(OBJ_DIR)*
-	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C $(LIBUI_DIR)
 	@printf "$(C_MAGENTA)$(NAME):$(C_NONE) %-25s$(C_RED)[done]$(C_NONE)\n" $@
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C $(LIBUI_DIR)
 	@printf "$(C_MAGENTA)$(NAME):$(C_NONE) %-25s$(C_RED)[done]$(C_NONE)\n" $@
 
 re: fclean all
