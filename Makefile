@@ -6,7 +6,7 @@
 #    By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/15 19:28:21 by mhonchar          #+#    #+#              #
-#    Updated: 2019/08/14 17:46:12 by mhonchar         ###   ########.fr        #
+#    Updated: 2019/08/19 19:47:41 by mhonchar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,12 @@ LIB = 	$(addprefix $(LIBUI_DIR), $(LIBUI_NAME)) \
 SRC_FILES =		main.c \
 				sdl_init.c \
 				sdl_clean.c \
-				canvas.c \
+				cn_canvas.c \
+				cn_event_handler.c \
 				draw_line.c \
+				main_loop.c \
 				bt_clear_canvas.c \
-				wn_toolbox.c 
+				tb_toolbox.c 
 
 
 				

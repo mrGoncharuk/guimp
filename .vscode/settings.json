@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"ios": "c",
+		"canvas.h": "c",
+		"toolbox.h": "c",
+		"memory": "c"
+	}
+}

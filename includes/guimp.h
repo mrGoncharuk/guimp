@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 17:36:27 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/08/14 16:51:42 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/19 18:38:55 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ typedef struct		s_flags
 
 typedef struct		s_sdls
 {
-	SDL_Window		*win;
-	SDL_Renderer	*renderer;
+	t_canvas		canvas;
+	t_toolbox		toolbox;
 	t_flags			flags;
-	t_lbutton		buttons[TOTAL_BUTTONS];
-
 }					t_sdls;
 
-void				ft_sdl_init(t_sdls *win);
-void				ft_sdl_clean(t_sdls *s);
+void				ft_sdl_init(t_sdls *app);
+void				ft_sdl_clean(t_sdls *app);
+void				ft_mainloop(t_sdls *app);
 void				bt_clear_canvas(t_canvas *canvas, t_flags *flags);
 void				bt_event_clear_canvas(SDL_Event *e, t_lbutton *bt, t_flags *flags);
 #endif

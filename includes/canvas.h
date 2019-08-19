@@ -6,7 +6,7 @@
 /*   By: mhonchar <mhonchar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 17:22:57 by mhonchar          #+#    #+#             */
-/*   Updated: 2019/08/14 17:01:57 by mhonchar         ###   ########.fr       */
+/*   Updated: 2019/08/19 19:50:28 by mhonchar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define CANVAS_H
 
 # include "libui.h"
+
+# define CN_WIDTH 800
+# define CN_HEIGHT 600
+
 
 typedef struct		s_vector2
 {
@@ -30,6 +34,8 @@ typedef struct		s_mousepos
 
 typedef struct  	s_canvas
 {
+	t_window		wn;
+	t_mousepos		mp;
     int				w;
 	int				h;
 	Uint32			draw_color;
@@ -37,8 +43,12 @@ typedef struct  	s_canvas
 	SDL_Texture		*field;
 }					t_canvas;
 
-t_canvas	*ft_create_canvas(SDL_Renderer *r, const int w, const int h);
-void		ft_destroy_canvas(t_canvas *canvas);
+
+void		cn_create_canvas(t_canvas *cn);
+void		cn_event_handle(t_canvas *cn, SDL_Event *e, t_flags *f);
+void		cn_update(t_canvas *cn);
+void		cn_render(t_canvas *cn);
+void		cn_destroy_canvas(t_canvas *canvas);
 void		ft_draw_line(t_canvas *canv, t_vector2 p0, t_vector2 p1);
 
 
